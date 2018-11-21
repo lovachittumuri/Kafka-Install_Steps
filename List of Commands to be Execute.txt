@@ -1,0 +1,42 @@
+
+Create the logs 
+
+Please create the folder <<kafkalogs\logs>> in any drive. folder name is any thing. any provide the path in log.dirs=H:/kafkalogs/logs (server.properties) 
+modifiy the server.properties and zookeeper.properties files.
+
+Note : please open command prompt for ever
+
+For  Broker :
+<go to Kafka folder  bin\windows>:\>zookeeper-server-start.bat ../../config/zookeeper.properties
+
+For  Kafka Server :
+<go to Kafka folder  bin\windows>:\>kafka-server-start.bat ../../config/server.properties
+
+For topic Creatation :
+<go to Kafka folder  bin\windows>:\>kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
+Note : Here topic name is : test
+
+For the Kafka producer : 
+
+<go to Kafka folder  bin\windows>:\>kafka-console-producer.bat --broker-list localhost:9092 --topic test
+
+
+from Begining : consuming the Kafka Service.
+kafka-console-consumer.bat --bootstrap-server localhost:2181 --from-beginning --topic test
+
+for the latest messages :
+
+kafka-console-consumer.bat --bootstrap-server localhost:2181 --topic test
+
+if your maintain the partition wise :
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --from-beginning --topic test --partition 0
+
+
+
+*******************Kafka - Spring Boot *****************************
+
+https://github.com/bjedrzejewski/kafkaintro
+
+
+********************************************************************
